@@ -7,3 +7,16 @@ export default function Home({
   handleAddToWatchList,
   handleRemoveFromWatchList,
   setWatchList,
+}) {
+  return (
+    <>
+      <Banner />
+      <TrendingMovies
+        watchList={watchList}
+        handleAddToWatchList={handleAddToWatchList}
+        handleRemoveFromWatchList={handleRemoveFromWatchList}
+        setWatchList={setWatchList}
+      />
+    </>
+  );
+}

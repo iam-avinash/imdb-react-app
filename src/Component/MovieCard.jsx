@@ -9,6 +9,14 @@ function MovieCard({
   handleAddToWatchList,
   handleRemoveFromWatchList,
 }) {
+  function isContain(movieObj) {
+    for (let i = 0; i < watchList.length; i++) {
+      if (movieObj.id === watchList[i].id) {
+        return true;
+      }
+    }
+    return false;
+  }
   return (
     <>
       <div
@@ -17,7 +25,7 @@ function MovieCard({
           backgroundImage: `url(https://image.tmdb.org/t/p/original${poster_path})`,
         }}
       >
-        {watchList.includes(movieObj) ? (
+        {isContain(movieObj) ? (
           <div
             className="text-2xl absolute top-0 right-0 cursor-pointer  m-2 p-1 bg-slate-950/50 rounded-lg"
             onClick={() => handleRemoveFromWatchList(movieObj)}
@@ -41,4 +49,4 @@ function MovieCard({
   );
 }
 
-export de
+export default MovieCard;

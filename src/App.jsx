@@ -48,4 +48,11 @@ function App() {
                 handleRemoveFromWatchList={handleRemoveFromWatchList}
               />
             }
-      
+          ></Route>
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
+}
+
+export default App;

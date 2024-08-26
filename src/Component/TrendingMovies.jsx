@@ -51,4 +51,17 @@ export default function TrendingMovies({
               poster_path={movieObj.poster_path}
               watchList={watchList}
               handleAddToWatchList={handleAddToWatchList}
-              handleRemoveFromWatchList={handleRemoveFromWatc
+              handleRemoveFromWatchList={handleRemoveFromWatchList}
+            />
+          );
+        })}
+      </div>
+
+      <Pagination
+        pageNo={pageNo}
+        handleNext={handleNext}
+        handlePrevious={handlePrevious}
+      />
+    </>
+  );
+}
