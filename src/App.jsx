@@ -3,9 +3,19 @@ import Home from "./Component/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./Component/NavBar";
 import Watch from "./Component/Watch";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 function App() {
   const [watchList, setWatchList] = useState([]);
+  const [pageNo, setPageNo] = useState(1);
+  function handleNext() {
+    setPageNo(pageNo + 1);
+  }
+
+  function handlePrevious() {
+    if (pageNo > 1) {
+      setPageNo(pageNo - 1);
+    }
+  }
 
   const handleAddToWatchList = (movieObj) => {
     // const newWatchList = [...watchList];
@@ -23,6 +33,17 @@ function App() {
     setWatchList(newWatchList);
   };
 
+  useEffect(() => {
+    let watchListFromLocalStorage = JSON.parse(
+      localStorage.getItem("watchList")
+    );
+    if (watchListFromLocalStorage === null) {
+      return;
+    }
+
+    setWatchList(watchListFromLocalStorage);
+  }, []);
+
   return (
     <>
       <BrowserRouter>
@@ -36,6 +57,10 @@ function App() {
                 setWatchList={setWatchList}
                 handleAddToWatchList={handleAddToWatchList}
                 handleRemoveFromWatchList={handleRemoveFromWatchList}
+                pageNo={pageNo}
+                handleNext={handleNext}
+                handlePrevious={handlePrevious}
+                setPageNo={setPageNo}
               />
             }
           ></Route>
@@ -44,7 +69,7 @@ function App() {
             element={
               <Watch
                 watchList={watchList}
-                handleAddToWatchList={handleAddToWatchList}
+                setWatchList={setWatchList}
                 handleRemoveFromWatchList={handleRemoveFromWatchList}
               />
             }

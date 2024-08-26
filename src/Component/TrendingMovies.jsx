@@ -7,19 +7,11 @@ export default function TrendingMovies({
   handleAddToWatchList,
   handleRemoveFromWatchList,
   setWatchList,
+  pageNo,
+  handleNext,
+  handlePrevious,
 }) {
   const [movies, setMovies] = useState([]);
-  const [pageNo, setPageNo] = useState(1);
-
-  function handleNext() {
-    setPageNo(pageNo + 1);
-  }
-
-  function handlePrevious() {
-    if (pageNo > 1) {
-      setPageNo(pageNo - 1);
-    }
-  }
 
   useEffect(() => {
     let apiKey = "93adede0a1f1e4785f88203448555798";

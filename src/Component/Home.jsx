@@ -7,6 +7,9 @@ export default function Home({
   handleAddToWatchList,
   handleRemoveFromWatchList,
   setWatchList,
+  pageNo,
+  handleNext,
+  handlePrevious,
 }) {
   return (
     <>
@@ -16,6 +19,9 @@ export default function Home({
         handleAddToWatchList={handleAddToWatchList}
         handleRemoveFromWatchList={handleRemoveFromWatchList}
         setWatchList={setWatchList}
+        pageNo={pageNo}
+        handleNext={handleNext}
+        handlePrevious={handlePrevious}
       />
     </>
   );
