@@ -89,7 +89,7 @@ function Watch({ watchList, handleRemoveFromWatchList, setWatchList }) {
         <table className="p-4 w-full text-center">
           <thead className=" h-[3rem] bg-gray-50 border-b-2">
             <tr>
-              <th>Name</th>
+              <th>Title</th>
               <th className="flex">
                 <div onClick={handleIncrease} className="p-2">
                   <i className="fa-solid fa-up-long"></i>
