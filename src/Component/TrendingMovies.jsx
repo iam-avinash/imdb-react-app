@@ -1,17 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Pagination from "./Pagination";
 import MovieCard from "./MovieCard";
 import axios from "axios";
-export default function TrendingMovies({
-  watchList,
-  handleAddToWatchList,
-  handleRemoveFromWatchList,
-  setWatchList,
-  pageNo,
-  handleNext,
-  handlePrevious,
-}) {
+import { MovieContext } from "./MoviesContext";
+export default function TrendingMovies() {
   const [movies, setMovies] = useState([]);
+  const { pageNo } = useContext(MovieContext);
 
   useEffect(() => {
     let apiKey = "93adede0a1f1e4785f88203448555798";
@@ -41,19 +35,12 @@ export default function TrendingMovies({
               movieObj={movieObj}
               title={movieObj.title}
               poster_path={movieObj.poster_path}
-              watchList={watchList}
-              handleAddToWatchList={handleAddToWatchList}
-              handleRemoveFromWatchList={handleRemoveFromWatchList}
             />
           );
         })}
       </div>
 
-      <Pagination
-        pageNo={pageNo}
-        handleNext={handleNext}
-        handlePrevious={handlePrevious}
-      />
+      <Pagination />
     </>
   );
 }
