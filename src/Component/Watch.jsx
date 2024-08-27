@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { MovieContext } from "./MoviesContext";
 
-function Watch({ watchList, handleRemoveFromWatchList, setWatchList }) {
+function Watch() {
   const [search, setSearch] = useState("");
+  const { watchList, handleRemoveFromWatchList, setWatchList } =
+    useContext(MovieContext);
   const [genreList, setGenreList] = useState(["All Genre"]);
   const GENRE_NAME = {
     28: "Action",
@@ -32,7 +35,6 @@ function Watch({ watchList, handleRemoveFromWatchList, setWatchList }) {
     let sortedList = watchList.sort(function (a, b) {
       return b.vote_average - a.vote_average;
     });
-    console.log(sortedList);
 
     setWatchList([...sortedList]);
   }
@@ -52,14 +54,6 @@ function Watch({ watchList, handleRemoveFromWatchList, setWatchList }) {
   }, [watchList]);
   return (
     <>
-      {/* <div>
-        <div className=" flex 	justify-around h-64 rounded-lg pt-0.5 pr-0.5 ">
-          <div className=" flex text-center bg-cyan-50 h-24 w-40 rounded-lg ml-2 mt-4  text-4xl	font-bold	text-green-300">
-            All Genre
-          </div>
-        </div>
-      </div> */}
-
       <div className=" flex justify-center">
         {genreList.map((genre) => {
           return (
